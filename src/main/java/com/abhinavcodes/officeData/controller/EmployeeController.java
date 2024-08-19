@@ -3,7 +3,6 @@ package com.abhinavcodes.officeData.controller;
 import com.abhinavcodes.officeData.entity.Employee;
 import com.abhinavcodes.officeData.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +18,12 @@ public class EmployeeController {
     @GetMapping("/all")
     public List<Employee> getAllEmployees(){
         return employeeService.getAll();
+    }
+
+    @GetMapping("/all/{s}")
+    public Optional<List<Employee>> getAllEmployees(@PathVariable String s){
+        return employeeService.getAllEmployeesStrartingWith(s);
+
     }
 
     @GetMapping("/id/{id}")

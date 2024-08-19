@@ -3,7 +3,6 @@ package com.abhinavcodes.officeData.service;
 import com.abhinavcodes.officeData.entity.Employee;
 import com.abhinavcodes.officeData.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +48,9 @@ public class EmployeeService {
 
 
         }
+
+    public Optional<List<Employee>> getAllEmployeesStrartingWith(String s) {
+        return employeeRepository.findByEmpNameStartingWith(s);
     }
+}
 
