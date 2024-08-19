@@ -16,15 +16,10 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping("/all")
-    public List<Employee> getAllEmployees(){
-        return employeeService.getAll();
+    public List<Employee> getAllEmployees(@RequestParam(required = false) String filter){
+        return employeeService.getAll(filter);
     }
 
-    @GetMapping("/all/{s}")
-    public Optional<List<Employee>> getAllEmployees(@PathVariable String s){
-        return employeeService.getAllEmployeesStrartingWith(s);
-
-    }
 
     @GetMapping("/id/{id}")
     public Optional<Employee> getById(@PathVariable int id){
